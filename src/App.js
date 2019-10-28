@@ -1,14 +1,34 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+import MyComponent from './MyComponent'
 import './App.css';
 
 class App extends Component {
-  render() {
-    const title = "Inventory Management"
-    return (
+  constructor(props){
+    super(props);
 
+    this.state = {
+      title: 'App Title'
+    }
+
+    //uses constructor for proper binding of this
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(){
+    this.setState({title: 'New App Title'})
+  }
+
+  render() {
+    const list = [
+      'Item 1',
+      'Item 2',
+      'Item 3'
+    ];
+    return (
       <div className="App">
-        <h1>{title}</h1>
+        <h1>{this.state.title}</h1>
+        <div onClick={this.onClick}>Click Here!</div>
+        <MyComponent />
       </div>
     );  
   }
