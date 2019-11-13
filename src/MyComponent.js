@@ -22,7 +22,7 @@ class MyComponent extends Component {
   }
 
   render() {
-      const {title, name, onClick} = this.props;
+      const {title, name} = this.props;
       return(
           <div className="component">
               <h1>Title: {title}</h1>
