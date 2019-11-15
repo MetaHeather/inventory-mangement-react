@@ -26,6 +26,7 @@ class App extends Component {
 
     this.onAdd = this.onAdd.bind(this);
     this.onDelete = this.onDelete.bind(this);
+    this.onEditSubmit = this.onEditSubmit.bind(this);
   }
 
   // Methods //
@@ -56,6 +57,22 @@ class App extends Component {
     this.setState({ products });
   }
 
+  onEditSubmit(name, price, originalName) {
+    let products = this.getProducts();  
+    products = products.map(product => {
+      //if product name is the same as name we passed in then
+      //set the product name and price to the new input values
+      if(product.name === originalName) {
+        product.name = name;
+        product.price = price;
+      }
+      return product;
+    });
+    //then update the state with the new info
+    this.setState({ products });
+  }
+
+
   // Render //
 
   render() {
@@ -75,6 +92,7 @@ class App extends Component {
                 key={product.name}
                 {...product}
                 onDelete={this.onDelete}
+                onEditSubmit={this.onEditSubmit}
               />
             )
           })

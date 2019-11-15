@@ -13,6 +13,8 @@ class AddProduct extends Component {
     //prevents the page from refreshing
     event.preventDefault();
     this.props.onAdd(this.nameInput.value, this.priceInput.value);
+    this.nameInput.value = '';
+    this.priceInput.value = '';
   }
 
   // Render // 
